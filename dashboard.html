@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BI Team Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .metrics {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .metric-box {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 30%;
+        }
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>BI Team Metrics Dashboard</h2>
+        
+        <div class="metrics">
+            <div class="metric-box">
+                <h3>Report Usage</h3>
+                <p>1,245 views</p>
+            </div>
+            <div class="metric-box">
+                <h3>Data Quality</h3>
+                <p>98.5% accuracy</p>
+            </div>
+            <div class="metric-box">
+                <h3>User Satisfaction</h3>
+                <p>4.7/5 rating</p>
+            </div>
+        </div>
+        
+        <canvas id="reportUsageChart"></canvas>
+        <canvas id="dataQualityChart"></canvas>
+    </div>
+
+    <script>
+        const ctx1 = document.getElementById('reportUsageChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Report Views',
+                    data: [320, 450, 610, 790, 890, 1245],
+                    backgroundColor: 'rgba(0, 123, 255, 0.7)'
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        const ctx2 = document.getElementById('dataQualityChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Data Quality (%)',
+                    data: [97, 96.5, 98, 97.8, 98.2, 98.5],
+                    borderColor: 'green',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: { responsive: true }
+        });
+    </script>
+</body>
+</html>
